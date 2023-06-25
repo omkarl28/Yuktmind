@@ -1,0 +1,254 @@
+{% load static %}
+{% load embed_video_tags %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>eLEARNING - eLearning HTML Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href={% static 'img/favicon.ico' %} rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href={% static 'lib/animate/animate.min.css' %} rel="stylesheet">
+    <link href={% static 'lib/owlcarousel/assets/owl.carousel.min.css' %} rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href={% static 'css/bootstrap.min.css' %} rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href={% static 'css/style.css' %} rel="stylesheet">
+  
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+  
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <img src={% static 'img/logo.png' %} style="height:60px;">
+            <h2 class="m-0 text-primary"></i>YuktMind</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link active">Resourses</a>
+                <a href="about.html" class="nav-item nav-link">Daily Current Affairs</a>
+                <a href="courses.html" class="nav-item nav-link">Student Portal</a>
+                <a href="courses.html" class="nav-item nav-link">Guidance Blog</a>
+                
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+   
+   </div>
+<!-- Header End -->
+
+
+<div class="container">
+    <br/>
+    <br/>
+
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your cart</span>
+          <span class="badge badge-secondary badge-pill">3</span>
+        </h4>
+        <ul class="list-group mb-3">
+          {%for course in returncourse%}
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">{{course.c_name}}</h6>
+              <small class="text-muted">{{course.c_start_dt}}</small>
+            </div>
+            <span class="text-muted">Rs.{{course.c_fees}}</span>
+          </li>
+          {%endfor%}
+        </ul>
+
+       
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Promo code">
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-secondary">Redeem</button>
+            </div>
+          </div>
+       
+      </div>
+      <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Billing address</h4>
+        
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="firstName">First name </label>
+              <input type="text" class="form-control" id="firstName" name="firstName"  placeholder="" value="{{user.first_name}}" required="">
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="lastName">Last name</label>
+              <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" value="{{user.last_name}}}" required="">
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+          </div>
+
+          
+
+          <div class="mb-3">
+            <label for="email">Email <span class="text-muted">(Optional)</span></label>
+            <input type="email" class="form-control" id="email" value="{{user.email}}">
+            <div class="invalid-feedback">
+              Please enter a valid email address for shipping updates.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address1" name="address1" placeholder="1234 Main St" required="">
+            <div class="invalid-feedback">
+              Please enter your shipping address.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+            <input type="text" class="form-control" id="address2" name="address2" placeholder="Apartment or suite">
+          </div>
+
+          <div class="row">
+            <div class="col-md-5 mb-3">
+              <label for="country">Country</label>
+             
+                <input type="text" class="form-control" id="country" name="country" placeholder="Country" required="">
+                
+              
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="state">State</label>
+              <input type="text" class="form-control" id="state" name="state" placeholder="State" required="">
+              <div class="invalid-feedback">
+                Please provide a valid state.
+              </div>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="zip">Zip</label>
+              <input type="text" class="form-control" id="zip" name="" placeholder="" required="">
+              <div class="invalid-feedback">
+                Zip code required.
+              </div>
+            </div>
+          </div>
+          <hr class="mb-4">
+          
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="save-info">
+            <label class="custom-control-label" for="save-info">Save this information for next time</label>
+          </div>
+          <hr class="mb-4">
+
+          <h4 class="mb-3">Payment</h4>
+
+          <div class="d-block my-3">
+            <div class="custom-control custom-radio">
+              QR code: GPay
+              <img src="https://cdn.crunchify.com/wp-content/uploads/2020/12/Crunchify.com-QRCode-gray-color.png">
+            </div>
+            or
+            <div class="custom-control custom-radio">
+               NEFT to below bank details
+            </div>
+            
+          </div>
+          
+          
+          <hr class="mb-4">
+          <form action="" method="post">
+            {% csrf_token %}
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+        </form>
+      </div>
+    </div>
+
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Quick Link</h4>
+                    <a class="btn btn-link" href="">About Us</a>
+                    <a class="btn btn-link" href="">Contact Us</a>
+                    <a class="btn btn-link" href="">Privacy Policy</a>
+                    <a class="btn btn-link" href="">Terms & Condition</a>
+                    <a class="btn btn-link" href="">FAQs & Help</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-3">Contact</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Uttar Pradesh</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91-9004684342</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>omkar.lawande@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src={% static 'lib/wow/wow.min.js' %}></script>
+    <script src={% static 'lib/easing/easing.min.js' %}></script>
+    <script src={% static 'lib/waypoints/waypoints.min.js' %}></script>
+    <script src={% static 'lib/owlcarousel/owl.carousel.min.js' %}></script>
+
+    <!-- Template Javascript -->
+    <script src={% static 'js/main.js' %}></script>
+</body>
+
+</html>
